@@ -1,0 +1,12 @@
+[Unit]
+Description=BOBER ***** SERVER ADMINISTRATION BOT
+After=multi-user.target
+
+[Service]
+Type=simple
+Restart=on-failure
+WorkingDirectory=/home/user/bober_server_administration_bot/
+ExecStart=/home/user/bober_server_administration_bot/venv/bin/python run.py
+
+[Install]
+WantedBy=multi-user.target

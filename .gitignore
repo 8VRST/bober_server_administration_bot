@@ -1,0 +1,11 @@
+__pycache__
+.vscode
+.idea
+venv
+
+sandbox.py
+
+logs/logs/*
+deploy/bober-server-administration-bot.service
+configs/users_permissions.json
+configs/.env

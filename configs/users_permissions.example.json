@@ -1,0 +1,7 @@
+{
+  "servers": [""],
+  "11111111": {
+    "user": "Name",
+    "servers": ["all"]
+  }
+}
