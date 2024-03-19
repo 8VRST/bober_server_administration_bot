@@ -34,8 +34,24 @@ def server_stat(message):
         text += f"{key}: {value}\n"
 
     chat_id = chat_id_from_message(message=message)
+    user_id = user_id_from_message(message=message)
 
-    bot.send_message(chat_id=chat_id, text=text, parse_mode="Markdown")
+    bot.send_message(chat_id=chat_id, text=text, parse_mode="Markdown", reply_markup=available_servers.get(user_id=user_id))
+
+
+@bot.message_handler(commands=["my_id"])
+def my_id(message):
+    bot.send_message(chat_id=chat_id_from_message(message=message), text=user_id_from_message(message=message))
+
+
+@bot.message_handler()
+def handler_for_everything(message):
+    user_id = user_id_from_message(message=message)
+    if str(user_id) in USERS_PERMISSIONS.keys():
+        name = message.from_user.first_name
+        bot.send_message(chat_id=chat_id_from_message(message=message),
+                         text=f"Hi, {name}!\n\nPlease tap on your server button to get data 🦫",
+                         reply_markup=available_servers.get(user_id=user_id))
 
 
 while __name__ == "__main__":
